@@ -1,3 +1,6 @@
 [submodule "vendor/iso-codes"]
 	path = vendor/iso-codes
 	url = https://salsa.debian.org/iso-codes-team/iso-codes.git
+[submodule "vendor/countries"]
+	path = vendor/countries
+	url = https://github.com/mledoze/countries
