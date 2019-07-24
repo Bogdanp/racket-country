@@ -50,12 +50,15 @@
            [db (hash-set db (country-code/numeric c) c)])
       db)))
 
+(define symbol-upcase
+  (compose1 string->symbol string-upcase symbol->string))
+
 (define/contract (country-ref selector)
   (-> (or/c numeric-code/c string? symbol?) (or/c false/c country?))
   (define selector*
     (cond
       [(string? selector) (string-downcase selector)]
-      [(symbol? selector) ((compose1 string->symbol string-upcase symbol->string) selector)]
+      [(symbol? selector) (symbol-upcase selector)]
       [else selector]))
 
   (hash-ref country-db selector* #f))
@@ -113,6 +116,7 @@
         (check-false (country-ref "foo")))
 
       (test-case "returns a country on successful lookup"
+        (check-true (country? (country-ref 'US)))
         (check-true (country? (country-ref 'us)))
         (check-true (country? (country-ref 'usa)))
         (check-true (country? (country-ref "United States"))))))
