@@ -4,4 +4,8 @@
 (define collection "country")
 
 (define deps '("base"))
-(define build-deps '())
+(define build-deps '("racket-doc"
+                     "rackunit-lib"
+                     "scribble-lib"))
+
+(define scribblings '(("country.scrbl" ())))
