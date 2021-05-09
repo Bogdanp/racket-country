@@ -23,7 +23,7 @@
   #:methods gen:custom-write
   [(define write-proc
      (make-constructor-style-printer
-      (lambda (s) 'subdivision)
+      (lambda (_) 'subdivision)
       (lambda (s) (list (subdivision-code s)))))])
 
 (define/contract all-subdivisions

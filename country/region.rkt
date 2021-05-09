@@ -17,7 +17,7 @@
   #:methods gen:custom-write
   [(define write-proc
      (make-constructor-style-printer
-      (lambda (r) 'region)
+      (lambda (_) 'region)
       (lambda (r) (list (region-name r)))))])
 
 (define/contract all-regions

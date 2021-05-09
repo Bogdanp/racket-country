@@ -30,7 +30,7 @@
   #:methods gen:custom-write
   [(define write-proc
      (make-constructor-style-printer
-      (lambda (c) 'country)
+      (lambda (_) 'country)
       (lambda (c) (list (country-common-name c)))))])
 
 (define/contract all-countries
@@ -98,8 +98,7 @@
 ;; tests ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (module+ test
-  (require racket/string
-           rackunit
+  (require rackunit
            rackunit/text-ui)
 
   (run-tests
